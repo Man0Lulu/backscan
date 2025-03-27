@@ -11,8 +11,12 @@ app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-const TELEGRAM_BOT_TOKEN = "SEU_TOKEN_BOT";
-const TELEGRAM_CHAT_ID = "SEU_CHAT_ID";
+require("dotenv").config();
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
+
+console.log("TOKEN:", TELEGRAM_BOT_TOKEN);
+console.log("CHAT_ID:", TELEGRAM_CHAT_ID);
 
 app.get("/", (req, res) => {
   const dataAtual = new Date();
